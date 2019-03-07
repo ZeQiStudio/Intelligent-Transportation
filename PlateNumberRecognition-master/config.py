@@ -1,0 +1,31 @@
+CONV1_SIZE = 8
+CONV2_SIZE = 5
+CHANNEL_NUM = 1
+CONV2_DEEP = 32
+CONV1_DEEP = 16
+FC1_SIZE = 512
+
+SIZE = 1280
+WIDTH = 32
+HEIGHT = 40
+
+
+
+SIZE = 1280
+WIDTH = 32
+HEIGHT = 40
+DIGITS_NUM_CLASSES = 34
+PROVINCE_NUM_CLASSES=6
+iterations = 1000
+batch_size = 60
+LEARNING_RATE_BASE = 0.001
+LEARNING_RATE_DECAY = 0.99
+REGULARIZATION_RATE = 0.0001
+MOVING_AVERAGE_DECAY = 0.99
+
+
+DIGITS_SAVER_DIR = 'train-saver/digits/'
+PROVINCE_SAVER_DIR='train-saver/province/'
+
+LETTERS_DIGITS = ("0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F","G","H","J","K","L","M","N","P","Q","R","S","T","U","V","W","X","Y","Z")
+PROVINCES = ("京","闽","粤","苏","沪","浙")
