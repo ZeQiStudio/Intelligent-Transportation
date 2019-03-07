@@ -39,7 +39,8 @@ class Detector(object):
             y = int(result[i][2])
             w = int(result[i][3] / 2)
             h = int(result[i][4] / 2)
-            retres.extend([[result[i][1],result[i][1],result[i][2],result[i][3]/2,result[i][4]/2]])
+            if result[i][0]=='car':
+                retres.extend([[result[i][1],result[i][1],result[i][2],result[i][3]/2,result[i][4]/2]])
             cv2.rectangle(img, (x - w, y - h), (x + w, y + h), (0, 255, 0), 2)
             cv2.rectangle(img, (x - w, y - h - 20),
                           (x + w, y - h), (125, 125, 125), -1)
