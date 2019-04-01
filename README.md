@@ -7,11 +7,11 @@ A tiny project which can sagment cars from the input images and recognize the co
 4. Put the file into yolo/data/weights
 5. Run Main.py
 ## Contributors
-[Ambition](https://github.com/957001934?tab=repositories)
-[UESBTC](https://github.com/UESBTC)
-[Sharif.XU](https://github.com/uestc-shadow)
-[CharlesYerts](https://github.com/CharlesYerts)
-[Stray123](https://github.com/Stray123)
+[Ambition](https://github.com/957001934?tab=repositories)  
+[UESBTC](https://github.com/UESBTC)  
+[Sharif.XU](https://github.com/uestc-shadow)  
+[CharlesYerts](https://github.com/CharlesYerts)  
+[Stray123](https://github.com/Stray123)  
 ## Reference
-[yolo_tensorflow](https://github.com/hizhangp/yolo_tensorflow)
-[PlateNumberRecogntion](https://github.com/UESBTC/PlateNumberRecognition)
+[yolo_tensorflow](https://github.com/hizhangp/yolo_tensorflow)  
+[PlateNumberRecogntion](https://github.com/UESBTC/PlateNumberRecognition)  
