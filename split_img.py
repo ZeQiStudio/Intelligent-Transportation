@@ -17,10 +17,10 @@ class Split:
     SAVE_SPLITED_URL =''
     order=0
 
-    def __init__(self,image_path,splited_saved):
-        self.IMAGE_PATH=image_path
+    def __init__(self,image,splited_saved):
         self.SAVE_SPLITED_URL=splited_saved
-        self.img = cv.imread(image_path)
+        self.img = image
+        #print(type(image))
         # 生成保存文件
         self.file_path = self.mkdir_file()
 
@@ -68,7 +68,8 @@ class Split:
 
 
     def mkdir_file(self):
-        number_plate_flie = self.IMAGE_PATH.split('\\')[-1].split('.')[0]
+        # number_plate_flie = self.IMAGE_PATH.split('\\')[-1].split('.')[0]
+        number_plate_flie='number_plate_'+str(self.img[0][0][1])
         file_path = self.SAVE_SPLITED_URL + str(number_plate_flie)
         isExisted = os.path.exists(file_path)
         if not isExisted:
@@ -78,7 +79,7 @@ class Split:
             print('该车牌字符分割文件夹已存在')
         return file_path
 
-    def split(self,preprocessed,binary):
+    def split(self,preprocessed,binary):#字符分割
         white = []  # 记录每一列的白色像素总和
         black = []  # ..........黑色.......
         height = preprocessed.shape[0]
@@ -124,7 +125,6 @@ class Split:
                 start = n
                 end = find_end(start)
                 n = end
-
                 if end - start > 5:
                     splited_img = binary[1:height, start:end]
                     #cv.imshow('splited_img', splited_img)#分割出的字符图片

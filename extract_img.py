@@ -18,15 +18,15 @@ class Extract:
     NEW_WIDTH = 233
     NEW_HEIGHT = 73
     def __init__(self,img_src,img_saved):
-        self.IMAGE_SRC=img_src
+        # self.IMAGE_SRC=img_src
         self.NUMBER_PLATE_SAVE_URL=img_saved
-        isExisted1=os.path.exists(img_src)
         isExisted2=os.path.exists(img_saved)
-        if not isExisted1:
-            print('图片源不存在，请确认图片路径输入正确')
+        # if not isExisted1:
+        #     print('图片源不存在，请确认图片路径输入正确')
         if not isExisted2:
             print('图片保存路径不存在，请确认图片保存路径正确')
-        self.img=cv.imread(img_src)
+        self.img=img_src
+
 
 
     def img_info(self,img):
@@ -41,7 +41,13 @@ class Extract:
     # 图象大小改变
     def resized(self,img):
         temp = img.copy()
-        new_img = cv.resize(temp,(self.NEW_WIDTH, self.NEW_HEIGHT), interpolation=cv.INTER_AREA)
+        h = temp.shape[0]
+        w = temp.shape[1]
+        print(w, h)
+        m = 400 * h / w
+        # 压缩图像
+        new_img = cv.resize(temp, (400, int(m)), interpolation=cv.INTER_CUBIC)
+        #cv.imshow('new_img', new_img)
         return new_img
 
     # 直方图均衡化
@@ -110,17 +116,20 @@ class Extract:
                 #print(number_plate.shape[:2])
                 if number_plate.shape[1] > (number_plate.shape[0] * 3) and (number_plate.shape[0] * 4.5) > (
                 number_plate.shape[1]):
-                    number_plate = self.resized(number_plate)
-                    cv.imwrite(self.NUMBER_PLATE_SAVE_URL + 'number_plate_' + str(x) + '.jpg', number_plate)
-                    #cv.imshow('number_plate' + str(x) + '.jpg', number_plate)#展示提取出的车牌截图
-
+                    # number_plate = self.resized(number_plate)
+                    number_plate_path=self.NUMBER_PLATE_SAVE_URL + 'number_plate_' + str(x) + '.jpg'
+                    cv.imwrite(number_plate_path, number_plate)
+                    # cv.imshow('number_plate' + str(x) + '.jpg', number_plate)#展示提取出的车牌截图
+                    cv.waitKey(0)
+                    return number_plate
 
     def extract(self):
         #cv.imshow('scr_img', self.img)
         # img = resized(img)
         contours = self.preprocess(self.img)
-        self.contour_judge(contours)
-        print('车牌提取完毕')
+        number_plate=self.contour_judge(contours)
+        # print('车牌提取完毕')
         # 可视化操作
         cv.waitKey(0)
         cv.destroyAllWindows()
+        return number_plate
