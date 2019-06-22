@@ -1,5 +1,5 @@
 ## Intelligent-Transportation
-A tiny project which can sagment cars from the input images and recognize the color, type and license number of the cars in it.(Not finished yet)
+A tiny project which can sagment cars from the input images and recognize the color, type and license number of the cars in those images.
 ## How to Use
 1. Download [train-saver](https://drive.google.com/drive/folders/1_6E2wT52uOW4eG0gTuwk89W7lSsjg9OE?usp=sharing)
 2. Put dictionaries *province* and *digits* into PlateNumberRecognition/train-saver/
